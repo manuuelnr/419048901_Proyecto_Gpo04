@@ -131,7 +131,7 @@ int main()
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);*/
 
 	// Create a GLFWwindow object that we can use for GLFW's functions
-	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Proyecto Avance (Iluminacion y Sombreado 2)", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Proyecto Avance", nullptr, nullptr);
 
 	if (nullptr == window)
 	{
@@ -175,6 +175,8 @@ int main()
 
 	// MODELOS DEL PROYECTO
 	Model Habitacion((char*)"Models/Gym/habitacion.obj");
+	Model Barra((char*)"Models/Gym/barra.obj");
+	Model Banca_inclinada((char*)"Models/Gym/banca_inclinada.obj");
 
 
 
@@ -292,9 +294,17 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1i(glGetUniformLocation(lightingShader.Program, "activaTransparencia"), 0);
 		Piso.Draw(lightingShader);  // CARGAR ROOM
+		model = glm::mat4(1);
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform1i(glGetUniformLocation(lightingShader.Program, "activaTransparencia"), 0);
-		Habitacion.Draw(lightingShader);
+		Habitacion.Draw(lampShader);
+		model = glm::mat4(1);
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Banca_inclinada.Draw(lampShader);
+		model = glm::mat4(1);
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Barra.Draw(lampShader);
+
+
 		//Esfera.Draw(lightingShader);
 
 

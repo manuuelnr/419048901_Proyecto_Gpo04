@@ -1,41 +1,34 @@
 newmtl color_6383466
 illum 4
-Kd 0.58 0.62 0.64
+Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
+map_Kd panelMetalTexture.png
 Ni 1.00
 newmtl color_11909273
 illum 4
-Kd 0.71 0.72 0.60
+Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
+map_Kd lamp.jpg
 Ni 1.00
 newmtl color_16448250
 illum 4
-Kd 1.00 1.00 1.00
+Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
+map_Kd whiteinwall.jpg
 Ni 1.00
 newmtl color_16768282
 illum 4
-Kd 1.00 1.00 1.00
+Kd 1.00 0.87 0.10
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
-newmtl phong1SG
+newmtl lambert2SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd glass.jpg
 Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
-newmtl phong2SG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
