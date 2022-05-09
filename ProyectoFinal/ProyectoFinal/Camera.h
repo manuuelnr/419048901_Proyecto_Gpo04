@@ -22,7 +22,7 @@ enum Camera_Movement
 // Default camera values
 const GLfloat YAW = -90.0f;
 const GLfloat PITCH = 0.0f;
-const GLfloat SPEED = 6.0f;
+const GLfloat SPEED = 10.0f;
 const GLfloat SENSITIVTY = 0.25f;
 const GLfloat ZOOM = 45.0f;
 
@@ -106,7 +106,7 @@ public:
 		// Make sure that when pitch is out of bounds, screen doesn't get flipped
 		if (constrainPitch)
 		{
-			if (this->pitch > 89.0f)
+			if (this->pitch > 100.0f)
 			{
 				this->pitch = 89.0f;
 			}

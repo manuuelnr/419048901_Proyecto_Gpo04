@@ -1,9 +1,49 @@
+newmtl Window:vidrio
+illum 4
+Kd 0.38 0.38 0.38
+Ka 0.38 0.38 0.38
+Tf 0.12 0.12 0.12
+Ni 1.50
+Ks 0.86 0.86 0.86
+Ns 54.00
+newmtl Window2:vidrio
+illum 4
+Kd 0.38 0.38 0.38
+Ka 0.38 0.38 0.38
+Tf 0.12 0.12 0.12
+Ni 1.50
+Ks 0.86 0.86 0.86
+Ns 54.00
+newmtl Window3:vidrio
+illum 4
+Kd 0.38 0.38 0.38
+Ka 0.38 0.38 0.38
+Tf 0.12 0.12 0.12
+Ni 1.50
+Ks 0.86 0.86 0.86
+Ns 54.00
+newmtl Window4:vidrio
+illum 4
+Kd 0.38 0.38 0.38
+Ka 0.38 0.38 0.38
+Tf 0.12 0.12 0.12
+Ni 1.50
+Ks 0.86 0.86 0.86
+Ns 54.00
+newmtl Window5:vidrio
+illum 4
+Kd 0.38 0.38 0.38
+Ka 0.38 0.38 0.38
+Tf 0.12 0.12 0.12
+Ni 1.50
+Ks 0.86 0.86 0.86
+Ns 54.00
 newmtl color_16448250
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
-map_Kd whiteinwall.jpg
+map_Kd techo.png
 Ni 1.00
 newmtl color_16768282
 illum 4
@@ -11,6 +51,104 @@ Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd yellow.jpg
+Ni 1.00
+newmtl initialShadingGroup
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd techo.png
+Ni 1.00
+newmtl lambert7SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blackOpaco.png
+Ni 1.00
+newmtl lambert8SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd cebra.jpg
+Ni 1.00
+newmtl lambert10SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd pisoPerson.png
+Ni 1.00
+newmtl lambert11SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood.png
+Ni 1.00
+newmtl lambert12SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd woodBlack.png
+Ni 1.00
+newmtl lambert13SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd calle.png
+Ni 1.00
+newmtl pasted__pasted__pasted__phong1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl pasted__pasted__phong1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl pasted__pasted__phong1SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl pasted__phong1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl pasted__typeBlinn2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd white.png
 Ni 1.00
 newmtl phong1SG
 illum 4
@@ -44,7 +182,25 @@ illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
-map_Kd marmol.png
+map_Kd marmol_brown.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl phong5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd escudoFI.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl phong6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd frontIn.png
 Ni 1.00
 Ks 0.50 0.50 0.50
 Ns 18.00
