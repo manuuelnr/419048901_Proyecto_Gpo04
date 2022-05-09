@@ -1,16 +1,170 @@
-newmtl barra1:lambert2SG
+newmtl HorizontalBar1:wire_006135006
+illum 4
+Kd 0.02 0.53 0.02
+Ka 0.02 0.53 0.02
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.35 0.35 0.35
+Ns 32.00
+newmtl HorizontalBar1:wire_006135113
+illum 4
+Kd 0.02 0.53 0.44
+Ka 0.02 0.53 0.44
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.35 0.35 0.35
+Ns 32.00
+newmtl HorizontalBar1:wire_008008136
+illum 4
+Kd 0.03 0.03 0.54
+Ka 0.03 0.03 0.53
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.35 0.35 0.35
+Ns 32.00
+newmtl HorizontalBar1:wire_057008136
+illum 4
+Kd 0.22 0.03 0.53
+Ka 0.22 0.03 0.53
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.35 0.35 0.35
+Ns 32.00
+newmtl HorizontalBar1:wire_135006006
+illum 4
+Kd 0.53 0.02 0.02
+Ka 0.53 0.02 0.02
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.35 0.35 0.35
+Ns 32.00
+newmtl HorizontalBar1:wire_135059008
+illum 4
+Kd 0.53 0.23 0.03
+Ka 0.53 0.23 0.03
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.35 0.35 0.35
+Ns 32.00
+newmtl Kettlebell1_OBJ_:lambert1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rusaText.png
+Ni 1.00
+newmtl Kettlebell1_OBJ_:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rusaText8.png
+Ni 1.00
+newmtl Kettlebell1_OBJ_:lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd rusaText4.png
+Ni 1.00
+newmtl _Dumbells_v1_L3:_Dumbells_v1_diffuse
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mancuernas1.jpg
+map_Ka 10499_Dumbells_v1_diffuse.jpg
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl banca_inclinada:initialShadingGroup
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd gray.png
+Ni 1.00
+newmtl banca_inclinada:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd banca_respaldo.png
+Ni 1.00
+newmtl banca_inclinada:lambert3SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd black.png
 Ni 1.00
-newmtl barra1:lambert3SG
+newmtl banca_inclinada:phong1SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
-map_Kd gray.png
+map_Kd suizaText.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl barra:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black.png
+Ni 1.00
+newmtl barra:lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd barraMetal.png
+Ni 1.00
+newmtl barra:lambert5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black2.png
+Ni 1.00
+newmtl barra:lambert6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black3.png
+Ni 1.00
+newmtl barra:lambert7SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd console.jpg
+Ni 1.00
+newmtl caminadora:initialShadingGroup
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl caminadora:lambert2SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl caminadora:lambert3SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl caminadora:lambert4SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
 Ni 1.00
 newmtl initialShadingGroup
 illum 4
@@ -23,12 +177,42 @@ illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
-map_Kd black.png
+map_Kd capTexture.png
 Ni 1.00
 newmtl lambert3SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
-map_Kd gray.png
+map_Kd capTexturePink.png
 Ni 1.00
+newmtl lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd capTextureSky.png
+Ni 1.00
+newmtl lambert5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black_rass2.png
+Ni 1.00
+newmtl mancuerna2:lambert6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd manc2text.png
+Ni 1.00
+newmtl phong2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd tubo.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
