@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <cmath>
 
@@ -18,30 +19,35 @@
 //Load Models
 #include "SOIL2/SOIL2.h"
 
-
 // Other includes
 #include "Shader.h"
 #include "Camera.h"
 #include "Model.h"
 #include "Texture.h"
+#include "modelAnim.h"
 
 // Function prototypes
 void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode);
 void MouseCallback(GLFWwindow *window, double xPos, double yPos);
 void DoMovement();
+void animacion();
 
 // Window dimensions
 const GLuint WIDTH = 800, HEIGHT = 600;
 int SCREEN_WIDTH, SCREEN_HEIGHT;
 
 // Camera
-Camera  camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera  camera(glm::vec3(0.0f, 10.0f, 25.0f));
 GLfloat lastX = WIDTH / 2.0;
 GLfloat lastY = HEIGHT / 2.0;
 bool keys[1024];
 bool firstMouse = true;
+
+
 // Light attributes
 glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
+glm::vec3 PosIni(-16.0f, 1.0f, -70.0f);
+glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 bool active;
 
 // Positions of the point lights
@@ -158,10 +164,31 @@ glm::vec3 Light2 = glm::vec3(0);
 glm::vec3 Light3 = glm::vec3(0);
 glm::vec3 Light4 = glm::vec3(0);
 
+//Animación de Puerta
+float rotDoor = 0.0f;
+bool actionDoor = false, openDoor = false;
+
+//Animación de Camara Seguridad
+float rotCam = 0.0;
+bool CamDerecha = false;
+
+//Animación del coche
+glm::vec3 PosIniCar(80.0f, 0.0f, 14.0f);
+float movKitX = 0.0;
+float movKitZ = 0.0;
+float rotKit  = 0.0;
+
+bool circuito = false;
+bool recorrido1 = true; bool recorrido2 = false; bool recorrido3 = false; bool recorrido4 = false;
+bool recorrido5 = false;bool recorrido6 = false; bool recorrido7 = false; bool recorrido8 = false;
+
+//Animación del personaje
+glm::vec3 PosIniPerson(-16.0f, 1.0f, -70.0f);
 
 // Deltatime
 GLfloat deltaTime = 0.0f;	// Time between current frame and last frame
 GLfloat lastFrame = 0.0f;  	// Time of last frame
+
 
 int main()
 {
@@ -213,19 +240,24 @@ int main()
 	Shader lightingShader("Shaders/lighting.vs", "Shaders/lighting.frag");
 	Shader lampShader("Shaders/lamp.vs", "Shaders/lamp.frag");
 	Shader SkyBoxshader("Shaders/SkyBox.vs", "Shaders/SkyBox.frag");
+	Shader animShader("Shaders/anim.vs", "Shaders/anim.frag");
 		
 
 	// Cargar modelos de gimnasio
 	Model Piso((char*)"Models/Gym/calles.obj");
 	Model Habitacion((char*)"Models/Gym/habitacion.obj");
+	Model Entrada((char*)"Models/Gym/entrada.obj");
+	Model Puerta((char*)"Models/Gym/puertaPrincipal.obj");
+	Model Estante((char*)"Models/Gym/estante.obj");
 	Model Ventanas((char*)"Models/Gym/ventanas.obj");
-	Model Esfera((char*)"Models/Esfera/Esfera.obj");
-
+	Model Marcos((char*)"Models/Gym/marcos.obj");
+	Model Hidrante((char*)"Models/Ambiente/hidrante.obj");
 
 	Model Banca_inclinada((char*)"Models/Gym/banca_inclinada.obj");
 	Model Caminadora((char*)"Models/Gym/caminadora.obj");
 	Model Barra((char*)"Models/Gym/barra.obj");
 	Model Rack((char*)"Models/Gym/rack.obj");
+	Model Rack2((char*)"Models/Gym/rack2.obj");
 	Model Multi((char*)"Models/Gym/barraMulti.obj");
 
 	Model Mancuerna((char*)"Models/Gym/mancuerna.obj");
@@ -238,6 +270,12 @@ int main()
 	Model Gorra1((char*)"Models/Gym/gorra1.obj");
 	Model Gorra2((char*)"Models/Gym/gorra2.obj");
 	Model Gorra3((char*)"Models/Gym/gorra3.obj");
+
+	////Modelos de animación
+	//ModelAnim animacionPersonaje("Animaciones/abdominal.dae");
+	Model Carro((char*)"Models/Ambiente/lamborginhi.obj");
+	Model Soporte((char*)"Models/Ambiente/soporte.obj");
+	Model Camara((char*)"Models/Ambiente/camara.obj");
 
 
 	// First, set the container's VAO (and VBO)
@@ -296,6 +334,7 @@ int main()
 		// Check if any events have been activiated (key pressed, mouse moved etc.) and call corresponding response functions
 		glfwPollEvents();
 		DoMovement();
+		animacion();
 
 		// Clear the colorbuffer
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
@@ -305,10 +344,6 @@ int main()
 		glEnable(GL_DEPTH_TEST);
 
 		
-		
-		//Load Model
-	
-
 		// Use cooresponding shader when setting uniforms/drawing objects
 		lightingShader.Use();
 		GLint viewPosLoc = glGetUniformLocation(lightingShader.Program, "viewPos");
@@ -364,18 +399,22 @@ int main()
 
 		// Pass the matrices to the shader
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
-
-
-		glm::mat4 model(1);
+		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));		
 
 		//Carga de modelos
-        view = camera.GetViewMatrix();	
+		view = camera.GetViewMatrix();	
 
+		glm::mat4 model(1);
 		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(0.0f, 0.8f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1i(glGetUniformLocation(lightingShader.Program, "activaTransparencia"), 0);
 		Piso.Draw(lightingShader);
+
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 5.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Hidrante.Draw(lightingShader);
 
 		model = glm::mat4(1);
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
@@ -424,31 +463,33 @@ int main()
 		Barra.Draw(lampShader);
 
 		model = glm::mat4(1);
-		model = glm::translate(model, glm::vec3(-15.0f, 0.0f, -50.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Rack.Draw(lampShader);
 
 		model = glm::mat4(1);
-		model = glm::translate(model, glm::vec3(-22.0f, 0.0f, -50.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		Rack.Draw(lampShader);
+		Rack2.Draw(lampShader);
 
-
-		//model = glm::mat4(1);
-		////model = glm::translate(model, glm::vec3(0.0f, 0.0f, -50.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//Mancuerna.Draw(lampShader);
-		//model = glm::mat4(1);
-		////model = glm::translate(model, glm::vec3(10.0f, 0.0f, -50.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//Mancuerna2.Draw(lampShader);
-		//model = glm::mat4(1);
-		////model = glm::translate(model, glm::vec3(10.0f, 0.0f, -50.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//Mancuerna3.Draw(lampShader);
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(3.0f, 0.3f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Mancuerna.Draw(lampShader);
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-4.0f, 0.3f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Mancuerna.Draw(lampShader);
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-3.0f, 0.3f, 0.5f));
+		model = glm::rotate(model, glm::radians(15.0f), glm::vec3(0.0f, -1.0f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Mancuerna.Draw(lampShader);
 
 
 		// Modelos Phong
+		model = glm::mat4(1);
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Estante.Draw(lightingShader);
+
 		model = glm::mat4(1);
 		model = glm::translate(model, glm::vec3(-12.0f, 9.0f, -88.5f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
@@ -493,24 +534,83 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Suiza.Draw(lightingShader);
 
-		
+		model = glm::mat4(1);
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Marcos.Draw(lightingShader);
 
+		model = glm::mat4(1);
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Entrada.Draw(lightingShader);
+
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(12.3f, 1.4f, -31.7f));
+		model = glm::rotate(model, glm::radians( rotDoor ), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Puerta.Draw(lightingShader);
+
+
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(0.0f, 4.12f, 3.4f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Gorra1.Draw(lightingShader);
+
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(0.0f, 4.12f, 3.5f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Gorra2.Draw(lightingShader);
+		
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(0.0f, 4.12f, 3.7f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Gorra3.Draw(lightingShader);
+
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(9.0f, 6.0f, 13.5f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Gorra3.Draw(lightingShader);
+
+		model = glm::mat4(1);
+		model = glm::translate(model, PosIniCar + glm::vec3(movKitX, 0, movKitZ));
+		model = glm::rotate(model, glm::radians(rotKit), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::scale(model, glm::vec3(1.5f, 1.5f, 1.5f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Carro.Draw(lightingShader);
+
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-12.0f, 15.0f, -82.6f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Soporte.Draw(lightingShader);
+
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-12.0f, 15.0f, -82.6f));
+		model = glm::rotate(model, glm::radians(rotCam), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Camara.Draw(lightingShader);
+
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-8.0f, 16.0f, -13.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Soporte.Draw(lightingShader);
+
+		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(-8.0f, 16.0f, -13.0f));
+		model = glm::rotate(model, glm::radians(rotCam), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Camara.Draw(lightingShader);
 
 		glEnable(GL_BLEND);//Avtiva la funcionalidad para trabajar el canal alfa
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		// OBJETOS TRANSPARENTES
-
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform1i(glGetUniformLocation(lightingShader.Program, "activaTransparencia"), 0);
-		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 0.0f, 1.0f);
-		//Ventanas.Draw(lightingShader);
-
-		/*model = glm::mat4(1);
+		model = glm::mat4(1);
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1i(glGetUniformLocation(lightingShader.Program, "activaTransparencia"), 1);
-		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 0.0f, 0.6f);
-		Esfera.Draw(lightingShader);*/
+		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 0.0f, 0.0f, 0.0f, 0.05f);
+		Ventanas.Draw(lightingShader);
 
 		glDisable(GL_BLEND);  //Desactiva el canal alfa 
 		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
@@ -543,6 +643,33 @@ int main()
 		////}
 
 		//glBindVertexArray(0);
+
+
+		/*_______________________________Personaje Animado___________________________*/
+		//animacionPersonaje.initShaders(animShader.Program);
+		//animShader.Use();
+		//modelLoc = glGetUniformLocation(animShader.Program, "model");
+		//viewLoc = glGetUniformLocation(animShader.Program, "view");
+		//projLoc = glGetUniformLocation(animShader.Program, "projection");
+
+		//glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+		//glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
+
+		//glUniform3f(glGetUniformLocation(animShader.Program, "material.specular"), 0.5f, 0.5f, 0.5f);
+		//glUniform1f(glGetUniformLocation(animShader.Program, "material.shininess"), 32.0f);
+		//glUniform3f(glGetUniformLocation(animShader.Program, "light.ambient"), 1.0f, 1.0f, 1.0f);
+		//glUniform3f(glGetUniformLocation(animShader.Program, "light.diffuse"), 1.0f, 1.0f, 1.0f);
+		//glUniform3f(glGetUniformLocation(animShader.Program, "light.specular"), 0.5f, 0.5f, 0.5f);
+		//glUniform3f(glGetUniformLocation(animShader.Program, "light.direction"), 0.0f, -1.0f, -1.0f);
+		//view = camera.GetViewMatrix();
+
+		//model = glm::mat4(1);
+		//model = glm::translate(model, glm::vec3(PosIniPerson.x, PosIniPerson.y, PosIniPerson.z));
+		//model = glm::scale(model, glm::vec3(0.06f));// ESCALAR ANIMACION al 6%
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//animacionPersonaje.Draw(animShader);
+		//glBindVertexArray(0);
+
 
 
 		// Draw skybox as last
@@ -630,8 +757,147 @@ void DoMovement()
 	{
 		pointLightPositions[0].z += 0.01f;
 	}
+
+	if (keys[GLFW_KEY_F])
+	{
+		actionDoor = true;
+	}
+
+	if (keys[GLFW_KEY_Z])
+	{
+		circuito = true;
+	}
+
+	if (keys[GLFW_KEY_X])
+	{
+		circuito = false;
+	}
 	
 }
+
+
+void animacion()
+{
+	//Movimiento de Camara Seguridad
+	rotCam += (CamDerecha) ? 0.3f : -0.3f ;
+	CamDerecha = (rotCam >= 90.0f) ? false : CamDerecha;
+	CamDerecha = (rotCam <= -90.0f) ? true : CamDerecha;
+
+	//Movimiento de Puerta
+	if (actionDoor) {
+		rotDoor += (openDoor) ? -0.8f : 0.8f ;
+		if (rotDoor <= 0.0f) {
+			openDoor = false;
+			actionDoor = false;
+		}
+		if (rotDoor >= 90.0f) {
+			openDoor = true;
+			actionDoor = false;
+		}
+	}
+
+	//Movimiento del coche
+	if (circuito)
+	{
+		if (recorrido1)
+		{
+			rotKit = 0.0f;
+			movKitX -= 0.2f;
+			if ( movKitX < -35.0f )
+			{
+				recorrido1 = false;
+				recorrido2 = true;
+			}
+		}
+
+		if (recorrido2)
+		{
+			rotKit = -45.0f;
+			movKitX -= 0.1f;
+			movKitZ -= 0.1f;
+			if ( movKitX < -50.0f && movKitZ < -15.0f )
+			{
+				recorrido2 = false;
+				recorrido3 = true;
+			}
+		}
+
+		if (recorrido3)
+		{
+			rotKit = 0.0f;
+			movKitX -= 0.05f;
+			if ( movKitX < -90.0f )
+			{
+				recorrido3 = false;
+				recorrido4 = true;
+			}
+		}
+
+		if (recorrido4)
+		{
+			rotKit = 45.0f;
+			movKitX -= 0.1f;
+			movKitZ += 0.1f;
+			if ( movKitX < -105.0f && movKitZ > 0.0f )
+			{
+				recorrido4 = false;
+				recorrido5 = true;
+			}
+		}
+
+
+		if (recorrido5)
+		{
+			rotKit = 0.0f;
+			movKitX -= 0.2f;
+			if (movKitX < -150.0f)
+			{
+				recorrido5 = false;
+				recorrido6 = true;
+			}
+		}
+
+		if (recorrido6)
+		{
+			rotKit = 90.0f;
+			movKitZ += 0.2f;
+			if ( movKitZ > 14.0f )
+			{
+				recorrido6 = false;
+				recorrido7 = true;
+			}
+		}
+
+		if (recorrido7)
+		{
+			rotKit = 180.0f;
+			movKitX += 0.2f;
+			if ( movKitX > 0.0f )
+			{
+				recorrido7 = false;
+				recorrido8 = true;
+			}
+		}
+
+		if (recorrido8)
+		{
+			rotKit = -90.0f;
+			movKitZ -= 0.2f;
+			if (movKitZ < 0.0f)
+			{
+				recorrido8 = false;
+				movKitX = 0.0f;
+				movKitZ = 0.0f;
+				recorrido1 = true;
+			}
+		}
+
+	}
+
+
+}
+
+
 
 // Is called whenever a key is pressed/released via GLFW
 void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode)

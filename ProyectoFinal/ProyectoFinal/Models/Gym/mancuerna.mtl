@@ -1,51 +1,3 @@
-newmtl HorizontalBar1:wire_006135006
-illum 4
-Kd 0.02 0.53 0.02
-Ka 0.02 0.53 0.02
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.35 0.35 0.35
-Ns 32.00
-newmtl HorizontalBar1:wire_006135113
-illum 4
-Kd 0.02 0.53 0.44
-Ka 0.02 0.53 0.44
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.35 0.35 0.35
-Ns 32.00
-newmtl HorizontalBar1:wire_008008136
-illum 4
-Kd 0.03 0.03 0.54
-Ka 0.03 0.03 0.53
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.35 0.35 0.35
-Ns 32.00
-newmtl HorizontalBar1:wire_057008136
-illum 4
-Kd 0.22 0.03 0.53
-Ka 0.22 0.03 0.53
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.35 0.35 0.35
-Ns 32.00
-newmtl HorizontalBar1:wire_135006006
-illum 4
-Kd 0.53 0.02 0.02
-Ka 0.53 0.02 0.02
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.35 0.35 0.35
-Ns 32.00
-newmtl HorizontalBar1:wire_135059008
-illum 4
-Kd 0.53 0.23 0.03
-Ka 0.53 0.23 0.03
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.35 0.35 0.35
-Ns 32.00
 newmtl Kettlebell1_OBJ_:lambert1SG
 illum 4
 Kd 0.00 0.00 0.00
@@ -148,24 +100,6 @@ Kd 0.50 0.50 0.50
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
-newmtl caminadora:lambert2SG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-newmtl caminadora:lambert3SG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-newmtl caminadora:lambert4SG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
 newmtl initialShadingGroup
 illum 4
 Kd 0.50 0.50 0.50
@@ -199,6 +133,13 @@ Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd black_rass2.png
+Ni 1.00
+newmtl lambert6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd calle.png
 Ni 1.00
 newmtl mancuerna2:lambert6SG
 illum 4
