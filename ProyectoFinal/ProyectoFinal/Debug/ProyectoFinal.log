@@ -1,28 +1,13 @@
 ﻿  419048901_Proyecto_Gpo04.cpp
 C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\modelAnim.h(104,44): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
 C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\modelAnim.h(519,24): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\419048901_Proyecto_Gpo04.cpp(330,24): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\419048901_Proyecto_Gpo04.cpp(362,21): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
-          with
-          [
-              T=float
-          ]
-C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\419048901_Proyecto_Gpo04.cpp(363,21): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
-          with
-          [
-              T=float
-          ]
-C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\419048901_Proyecto_Gpo04.cpp(364,25): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
-          with
-          [
-              T=float
-          ]
-C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\419048901_Proyecto_Gpo04.cpp(939,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\419048901_Proyecto_Gpo04.cpp(940,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\419048901_Proyecto_Gpo04.cpp(944,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\419048901_Proyecto_Gpo04.cpp(945,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\419048901_Proyecto_Gpo04.cpp(947,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\419048901_Proyecto_Gpo04.cpp(948,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\419048901_Proyecto_Gpo04.cpp(356,24): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\419048901_Proyecto_Gpo04.cpp(944,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\419048901_Proyecto_Gpo04.cpp(945,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\419048901_Proyecto_Gpo04.cpp(949,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\419048901_Proyecto_Gpo04.cpp(950,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\419048901_Proyecto_Gpo04.cpp(952,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\ProyectoFinal\419048901_Proyecto_Gpo04.cpp(953,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
 LINK : warning LNK4098: la biblioteca predeterminada'MSVCRT' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
 soil2-debug.lib(etc1_utils.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(etc1_utils.obj)' o en 'C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 soil2-debug.lib(image_DXT.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(image_DXT.obj)' o en 'C:\Users\HP\Documents\Computacion Grafica\419048901_Proyecto_Gpo04\ProyectoFinal\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
