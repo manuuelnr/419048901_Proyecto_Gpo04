@@ -2,7 +2,7 @@
  * @file 419048901_Proyecto_GPO04.cpp
  * @brief Archivo principal CPP (main program) del proyecto
  * @author NumCuenta: 419048901
- * @date 11/05/2022
+ * @date 25/05/2022
  */
 
 // Operaciones E/S
@@ -297,6 +297,14 @@ int main()
 	Model Gorra2((char*)"Models/Gym/gorra2.obj");
 	Model Gorra3((char*)"Models/Gym/gorra3.obj");
 
+	// Carga de modelos de habitacion de Boxeo
+	Model HabitacionBox((char*)"Models/Box/habitacionBox.obj");
+	Model Costal((char*)"Models/Box/costal.obj");
+	Model CostalPie((char*)"Models/Box/costalPie.obj");
+	Model Costalito((char*)"Models/Box/costalito.obj");
+	Model Muñeco((char*)"Models/Box/muñeco.obj");
+	Model RingBox((char*)"Models/Box/ring.obj");
+
 	// Carga de modelos de animación
 	ModelAnim animacionPersonaje("Animaciones/abdominal.dae");
 	Model Carro((char*)"Models/Ambiente/lamborginhi.obj");
@@ -435,6 +443,40 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Hidrante.Draw(lightingShader);
 
+
+
+		// Dibujar modelo de HABITACION BOXEO
+		model = glm::mat4(1);
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		HabitacionBox.Draw(lightingShader);
+		
+		// Dibujar modelo de Ring de Box
+		model = glm::mat4(1);
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		RingBox.Draw(lampShader);
+
+		// Dibujar modelos de costales de Box
+		model = glm::mat4(1);
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Costal.Draw(lampShader);
+		
+		// Dibujar modelos de costales para patadas de Box
+		model = glm::mat4(1);
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		CostalPie.Draw(lampShader);
+
+		// Dibujar modelos de costales para golpes de Box
+		model = glm::mat4(1);
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Costalito.Draw(lampShader);
+
+		// Dibujar modelos de muñecos de entrenamiento de Box
+		model = glm::mat4(1);
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Muñeco.Draw(lampShader);
+		
+
+		
 		// Operar y dibujar modelo de HABITACION GIMNASIO
 		model = glm::mat4(1);
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
@@ -454,11 +496,6 @@ int main()
 		Banca_inclinada.Draw(lampShader);
 
 		// Operar y dibujar modelos (ELEMENTO) Caminadoras
-		model = glm::mat4(1);
-		model = glm::translate(model, glm::vec3(22.0f, 0.0f, -68.0f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		Caminadora.Draw(lampShader);
-
 		model = glm::mat4(1);
 		model = glm::translate(model, glm::vec3(13.0f, 0.0f, -68.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));

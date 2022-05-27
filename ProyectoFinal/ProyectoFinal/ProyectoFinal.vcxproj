@@ -31,9 +31,6 @@
     <None Include="Shaders\SkyBox.vs" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="419048901_Proyecto_Gpo04.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="meshAnim.h" />
@@ -42,6 +39,9 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="Texture.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="419048901_Proyecto_Gpo04.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
