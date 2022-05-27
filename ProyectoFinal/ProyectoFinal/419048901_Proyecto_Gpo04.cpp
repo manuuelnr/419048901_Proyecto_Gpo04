@@ -2,7 +2,7 @@
  * @file 419048901_Proyecto_GPO04.cpp
  * @brief Archivo principal CPP (main program) del proyecto
  * @author NumCuenta: 419048901
- * @date 25/05/2022
+ * @date 27/05/2022
  */
 
 // Operaciones E/S
